@@ -1,35 +1,56 @@
-// '#' triangle
-var string = '';
-for (i = 0; i <= 7; i++) {
-  string += '#';
-  console.log(string);
-}
+// create a function like Math.min by hand
 
-// fizzbuzz
-for (i = 0; i <= 100; i++) {
-  if (i % 3 == 0 && i % 5 == 0) {
-    console.log('FizzBuzz');
-  } else if (i % 3 == 0) {
-    console.log('Fizz');
-  } else if (i % 5 == 0) {
-    console.log('Buzz');
+function min(a, b) {
+  if (a < b) {
+    console.log(a);
+  } else if (b < a) {
+    console.log(b);
   } else {
-    console.log(i);
+    console.log("Not applicable.");
   }
 }
 
-//create an 8x8 chessboard using '#' characters and spaces. then, make it so that the board can be any given WxH
-function chessBoard(w, h) {
-  var string1 = '#' + ' ' + '#' + ' ' + '#' + ' ' + '#' + ' ' + '\n'
-  var string2 = ' ' + '#' + ' ' + '#' + ' ' + '#' + ' ' + '#' + '\n';
-  var size = w * h;
-  for (i = 0; i <= size; i++) {
-    if (i % 2 == 0) {
-      console.log(string1);
-    } else {
-      console.log(string2);
-    }
+min(2, 3);
+min(5, 5);
+min(110, 50);
+
+
+// use recursion to write a function isEven() which takes a number as an argument and returns a boolean
+
+function isEven(n) {
+  if (n < 0) {
+    n *= -1;
+  }
+
+  if (n == 1) {
+    return false;
+  } else if (n == 0) {
+    return true;
+  } else {
+    return isEven(n - 2);
   }
 }
 
-chessBoard(2, 3);
+document.write(isEven(3));
+document.write(isEven(44));
+document.write(isEven(3));
+document.write(isEven(-3));
+document.write(isEven(-56));
+
+
+// write a function that takes a string as an argument and returns a number indicating the number of B's in the string
+
+function createBs(str) {
+var count = 0;
+var bFinder = str.indexOf('B');
+  while (bFinder !== -1) {
+    count++;
+    bFinder = str.indexOf('B', bFinder + 1);
+  }
+  return count;
+}
+
+console.log(createBs("Butthead")); // 1
+console.log(createBs("Bumblebee")); // 1
+console.log(createBs("BBBBBammmbB")); // 6
+console.log(createBs("Hello there")); // 0
