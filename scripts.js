@@ -1,56 +1,51 @@
-// create a function like Math.min by hand
+// write a range function that takes two arguments: start, and end, and returns an array of all the numbers from start
+// up to and including end
 
-function min(a, b) {
-  if (a < b) {
-    console.log(a);
-  } else if (b < a) {
-    console.log(b);
-  } else {
-    console.log("Not applicable.");
+function range(start, end) {
+  var arr = [];
+  if (start > end) {
+    for (i = end; i <= start; i++) {
+      arr.unshift(i);
+    }
   }
+  for (i = start; i <= end; i++) {
+    arr.push(i);
+  }
+  return arr;
 }
 
-min(2, 3);
-min(5, 5);
-min(110, 50);
+console.log(range(2, 12));
+console.log(range(12, 2));
+console.log(range(50, 100));
 
+// now, write a sum function that takes an array of numbers and returns the sum of those numbers
 
-// use recursion to write a function isEven() which takes a number as an argument and returns a boolean
-
-function isEven(n) {
-  if (n < 0) {
-    n *= -1;
-  }
-
-  if (n == 1) {
-    return false;
-  } else if (n == 0) {
-    return true;
-  } else {
-    return isEven(n - 2);
-  }
+function sum(array) {
+  let total = array.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+  return total;
 }
 
-document.write(isEven(3));
-document.write(isEven(44));
-document.write(isEven(3));
-document.write(isEven(-3));
-document.write(isEven(-56));
+var array1 = [1, 2, 3, 4, 5];
 
+document.write(sum(array1));
 
-// write a function that takes a string as an argument and returns a number indicating the number of B's in the string
+console.log(sum(range(1, 10)));
 
-function createBs(str) {
-var count = 0;
-var bFinder = str.indexOf('B');
-  while (bFinder !== -1) {
-    count++;
-    bFinder = str.indexOf('B', bFinder + 1);
+// write a function, reverseArray, that takes an array as an argument and returns a NEW array that has the same elements
+// in inverse order
+
+function reverseArray(arr) {
+  let newArr = [];
+  while ( (i = arr.shift()) !== undefined) {
+    console.log(i);
+    newArr.unshift(i);
   }
-  return count;
+  return newArr;
 }
 
-console.log(createBs("Butthead")); // 1
-console.log(createBs("Bumblebee")); // 1
-console.log(createBs("BBBBBammmbB")); // 6
-console.log(createBs("Hello there")); // 0
+var array2 = ["Hello", "Cruel", "World", "!"];
+
+console.log(reverseArray(array2));
